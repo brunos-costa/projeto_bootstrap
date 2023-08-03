@@ -7,3 +7,6 @@
 
 /* EFEITO MENU ATIVO*/
 .active{border-bottom:1px solid #fff;}
+
+/* PÁGINA CADASTRO*/
+.altura{height:300px; overflow-y:scroll;}
