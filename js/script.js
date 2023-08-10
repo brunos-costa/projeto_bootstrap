@@ -34,19 +34,23 @@ idade.addEventListener("blur",function(){
 let endereco = document.querySelector("input[name=end]")
 endereco.addEventListener("blur",function(){
     console.log(endereco.value.length)
+   
+        if(endereco.value != ""){
 
-    if(endereco.value!=""){// é preciso colocar esse if para impedir que, ao trocar de campo com a tecla tab, apareça o alert no campo endereço infinitamente
-        if(endereco.value.length >= 35){
-            alert("Endereço muito grande")
-            endereco.style.border = "2px solid red"
+            if(endereco.value.length >= 35){
+                alert("Endereço muito grande")
+                endereco.style.border = "2px solid red"
+            }
+            else{
+                alert("Tudo certo com o endereco!")
+                endereco.style.border = "2px solid yellow"
+            }
         }
-        else{
-            alert("Tudo certo com o endereco!")
-            endereco.style.border = "2px solid yellow"
-        }
-    }
+
+ 
     
 })
+
 
 let email = document.querySelector("#email")
 let confirmacao = document.querySelector("#confirmar")
@@ -165,4 +169,31 @@ trabalho.addEventListener("change",()=>{
 
     }
 
+})
+
+let cor = document.querySelector("#cor")
+cor.addEventListener("change",()=>{
+    console.log(cor.value)
+    document.body.style.backgroundColor = cor.value
+})
+
+let mensagem = document.querySelector("#mensagem")
+let restante = document.querySelector("#restante")
+
+let limite = 20
+mensagem.addEventListener("keyup",()=>{
+    //console.log(mensagem.value.length)
+    restante.textContent = mensagem.value.length
+
+    mensagem.setAttribute("maxlength",limite)
+    //console.log(restante.parentNode)
+
+    if(restante.textContent == 20){
+        mensagem.classList.add("border-danger")
+        restante.parentNode.style.color = "red"// parentNode significa que estamos pegando o elemento(nó da árvore DOM) pai.
+    }
+    else{
+        mensagem.classList.remove("border-danger")
+        restante.parentNode.style.color = "black"
+    }
 })
